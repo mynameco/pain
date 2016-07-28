@@ -49,27 +49,27 @@ namespace SettlersEngine
         private OpenCloseMap m_RuntimeGrid;
         private PathNode[,] m_SearchSpace;
 
-        public TPathNode[,] SearchSpace { get; private set; }
-        public int Width { get; private set; }
-        public int Height { get; private set; }
+		public TPathNode[,] SearchSpace;
+		public int Width;
+		public int Height;
 
         protected class PathNode : IPathNode<TUserContext>, IComparer<PathNode>, IIndexedObject
         {
             public static readonly PathNode Comparer = new PathNode(0, 0, default(TPathNode));
 
-            public TPathNode UserContext { get; internal set; }
-            public Double G { get; internal set; }
-            public Double H { get; internal set; }
-            public Double F { get; internal set; }
-            public int Index { get; set; }
+			public TPathNode UserContext;
+			public Double G;
+			public Double H;
+			public Double F;
+			public int Index { get; set; }
 
-            public Boolean IsWalkable(TUserContext inContext)
+			public Boolean IsWalkable(TUserContext inContext)
             {
                 return UserContext.IsWalkable(inContext);
             }
 
-            public int X { get; internal set; }
-            public int Y { get; internal set; }
+			public int X;
+			public int Y;
 
             public int Compare(PathNode x, PathNode y)
             {
@@ -328,9 +328,9 @@ namespace SettlersEngine
         private class OpenCloseMap
         {
             private PathNode[,] m_Map;
-            public int Width { get; private set; }
-            public int Height { get; private set; }
-            public int Count { get; private set; }
+			public int Width;
+			public int Height;
+			public int Count;
 
             public PathNode this[Int32 x, Int32 y]
             {

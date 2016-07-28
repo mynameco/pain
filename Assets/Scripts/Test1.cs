@@ -28,7 +28,7 @@ public class Test1 : MonoBehaviour
 		{
 			for (int y = 0; y < height; y++)
 			{
-				var pass = random.NextDouble() < 0.7f;
+				var pass = true;// random.NextDouble() < 0.7f;
 				field[x, y] = new MyPathNode();
 				field[x, y].IsWall = !pass;
 			}
@@ -144,7 +144,7 @@ public class Test1 : MonoBehaviour
 
 	private void GetPath()
 	{
-		var distance = 30;
+		var distance = 20;
 		var x = random.Next(0, width - distance);
 		var y = random.Next(0, height - distance);
 		var path = solver.Search(x, y, x + distance - 2, y + distance - 2, null);
@@ -155,9 +155,9 @@ public class Test1 : MonoBehaviour
 	[Inspectable]
 	private int unitCount;
 
-	private const int width = 1000;
-	private const int height = 1000;
-	private const int maxUnits = 10000;
+	private const int width = 100;
+	private const int height = 100;
+	private const int maxUnits = 1000;
 	private const int maxStateTime = 10;
 
 
