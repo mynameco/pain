@@ -29,7 +29,7 @@ public class Test1 : MonoBehaviour
 			for (int y = 0; y < height; y++)
 			{
 				var pass = random.NextDouble() < 0.7f;
-				field[x, y].Passability = pass;
+				field[x, y].IsWall = !pass;
 			}
 		}
 
@@ -37,6 +37,8 @@ public class Test1 : MonoBehaviour
 		{
 			InjectUnit();
 		}
+
+		solver = new MySolver<MyPathNode, object>(field);
 	}
 
 	private void Update()
@@ -141,9 +143,13 @@ public class Test1 : MonoBehaviour
 
 	private void GetPath()
 	{
+		var distance = 30;
+		var x = random.Next(0, width - distance);
+		var y = random.Next(0, height - distance);
+		var path = solver.Search(x, y, x + distance - 2, y + distance - 2, null);
 	}
 
-	private Cell[,] field = new Cell[width, height];
+	private MyPathNode[,] field = new MyPathNode[width, height];
 	private Unit[] units = new Unit[maxUnits];
 	[Inspectable]
 	private int unitCount;
@@ -156,4 +162,5 @@ public class Test1 : MonoBehaviour
 
 
 	private System.Random random = new System.Random();
+	private MySolver<MyPathNode, object> solver;
 }
