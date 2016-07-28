@@ -1,7 +1,7 @@
 ﻿using System;
 using SettlersEngine;
 
-public struct MyPathNode : IPathNode<object>
+public class MyPathNode : IPathNode<object>
 {
 	public Int32 X { get; set; }
 	public Int32 Y { get; set; }

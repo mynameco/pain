@@ -29,6 +29,7 @@ public class Test1 : MonoBehaviour
 			for (int y = 0; y < height; y++)
 			{
 				var pass = random.NextDouble() < 0.7f;
+				field[x, y] = new MyPathNode();
 				field[x, y].IsWall = !pass;
 			}
 		}
@@ -153,7 +154,6 @@ public class Test1 : MonoBehaviour
 	private Unit[] units = new Unit[maxUnits];
 	[Inspectable]
 	private int unitCount;
-	//private int currentTime;
 
 	private const int width = 1000;
 	private const int height = 1000;
